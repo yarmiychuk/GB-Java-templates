@@ -1,5 +1,12 @@
 import java.util.Scanner;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.XMLFormatter;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -74,5 +81,53 @@ public class program {
             System.out.println(str);
         }
         br.close();
+    }
+
+    static void file() {
+        try {
+            // Код, где может появиться ошибка
+            String pathProject = System.getProperty("user.dir");
+            String pathFile = pathProject.concat("/file.txt");
+            File f3 = new File(pathFile);
+            System.out.println(f3.getAbsolutePath());
+        } catch (Exception ex) {
+            // Обработка ошибки
+        }
+        finally {
+            // Код, который выполнится в любом случае
+        }
+    }
+
+    static void myLogger() {
+        // Параметр Логгера - класс для логгирования 
+        Logger logger = Logger.getLogger(program.class.getName());
+
+        // Для работы с консолью
+        ConsoleHandler info = new ConsoleHandler();
+        logger.addHandler(info);
+        
+        // Для работы с файлами
+        try {
+            FileHandler fh = new FileHandler("log.xml");
+            logger.addHandler(fh);
+        } catch (SecurityException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        // Простой формат вывода
+        SimpleFormatter sFormatter = new SimpleFormatter();
+        info.setFormatter(sFormatter);
+
+        // Формат вывода xml (предпочтительнее)
+        XMLFormatter xml = new XMLFormatter();
+        info.setFormatter(xml);
+
+        // Вывод
+        logger.log(Level.WARNING, "Текст предупреждения 1");
+        logger.info("Тест предупреждения 2");
     }
 }
