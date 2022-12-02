@@ -19,6 +19,11 @@ import java.util.Random;
 // Пример 2: а = 11, b = 7, c = 2, d = 1
 // ответ: нет решения.
 
+// РЕШЕНИЕ
+// f(x) = 
+// x-c, x%d == 1
+// x-c + x/d, x%d==0
+
 public class lection {
     static public void main(String[] args) {
         int a = 2; //getNumber("a");
