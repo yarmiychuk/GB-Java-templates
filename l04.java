@@ -2,8 +2,6 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-import javax.sound.sampled.LineListener;
-
 // Приоритетные коллекции
 
 // LinkedList - двухсвязный список
@@ -32,10 +30,10 @@ public class l04 {
 
         PriorityQueue<Integer> pq = new PriorityQueue<>();
 
-        pq.add(145);
+        pq.add(1456);
         pq.add(666);
-        pq.add(13);
-        pq.add(7);
+        pq.add(136);
+        pq.add(76);
         // Вывод: 7б 13б 145б 666
     }
 
